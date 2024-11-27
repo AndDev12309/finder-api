@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lost",
     "pluralName": "losts",
-    "displayName": "Lost"
+    "displayName": "Lost",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -40,19 +41,20 @@
       "type": "enumeration",
       "enum": [
         "Lost",
-        "Found"
+        "Rescued"
       ]
     },
     "date_reported": {
       "type": "date"
     },
     "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

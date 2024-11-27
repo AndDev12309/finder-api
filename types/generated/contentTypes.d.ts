@@ -404,6 +404,7 @@ export interface ApiFoundFound extends Struct.CollectionTypeSchema {
 export interface ApiLostLost extends Struct.CollectionTypeSchema {
   collectionName: 'losts';
   info: {
+    description: '';
     displayName: 'Lost';
     pluralName: 'losts';
     singularName: 'lost';
@@ -435,7 +436,7 @@ export interface ApiLostLost extends Struct.CollectionTypeSchema {
     photos: Schema.Attribute.Media<'images' | 'videos', true>;
     publishedAt: Schema.Attribute.DateTime;
     species: Schema.Attribute.String;
-    state: Schema.Attribute.Enumeration<['Lost', 'Found']>;
+    state: Schema.Attribute.Enumeration<['Lost', 'Rescued']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -929,7 +930,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -954,6 +954,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
