@@ -400,6 +400,10 @@ export interface ApiFoundFound extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -438,10 +442,15 @@ export interface ApiLostLost extends Struct.CollectionTypeSchema {
     photos: Schema.Attribute.Media<'images' | 'videos', true>;
     publishedAt: Schema.Attribute.DateTime;
     species: Schema.Attribute.String;
-    state: Schema.Attribute.Enumeration<['Lost', 'Rescued']>;
+    state: Schema.Attribute.Enumeration<['Lost', 'Rescued']> &
+      Schema.Attribute.DefaultTo<'Lost'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -945,12 +954,14 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    founds: Schema.Attribute.Relation<'oneToMany', 'api::found.found'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    losts: Schema.Attribute.Relation<'oneToMany', 'api::lost.lost'>;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{

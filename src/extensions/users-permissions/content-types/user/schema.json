@@ -69,6 +69,18 @@
       "type": "string",
       "required": true,
       "configurable": false
+    },
+    "founds": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::found.found",
+      "mappedBy": "user"
+    },
+    "losts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lost.lost",
+      "mappedBy": "user"
     }
   }
 }
