@@ -42,7 +42,8 @@
       "enum": [
         "Lost",
         "Rescued"
-      ]
+      ],
+      "default": "Lost"
     },
     "date_reported": {
       "type": "date"

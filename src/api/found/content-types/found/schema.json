@@ -4,7 +4,8 @@
   "info": {
     "singularName": "found",
     "pluralName": "founds",
-    "displayName": "Found"
+    "displayName": "Found",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,18 +32,20 @@
       "enum": [
         "Found",
         "Rescued"
-      ]
+      ],
+      "default": "Found"
     },
     "date_found": {
       "type": "date"
     },
     "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

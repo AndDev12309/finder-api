@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiFoundFound extends Struct.CollectionTypeSchema {
   collectionName: 'founds';
   info: {
+    description: '';
     displayName: 'Found';
     pluralName: 'founds';
     singularName: 'found';
@@ -394,7 +395,8 @@ export interface ApiFoundFound extends Struct.CollectionTypeSchema {
     photos: Schema.Attribute.Media<'images' | 'videos', true>;
     publishedAt: Schema.Attribute.DateTime;
     species: Schema.Attribute.String;
-    state: Schema.Attribute.Enumeration<['Found', 'Rescued']>;
+    state: Schema.Attribute.Enumeration<['Found', 'Rescued']> &
+      Schema.Attribute.DefaultTo<'Found'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
