@@ -9,8 +9,9 @@ export default [
   {
     name: "strapi::session",
     config: {
-      secure: true, // Asegura que las cookies solo se envíen a través de HTTPS
-      sameSite: "none", // Compatible con navegadores modernos
+      cookie: {
+        secure: false, // Desactiva cookies seguras para permitir HTTP
+      },
     },
   },
   "strapi::favicon",
