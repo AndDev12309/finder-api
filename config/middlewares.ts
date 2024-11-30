@@ -4,6 +4,7 @@ export default [
   "strapi::poweredBy",
   "strapi::query",
   "strapi::body",
+  "strapi::cors",
   {
     name: "strapi::cors",
     config: {
@@ -16,6 +17,7 @@ export default [
     },
   },
   "strapi::security",
+  "strapi::session",
   {
     name: "strapi::session",
     config: {
